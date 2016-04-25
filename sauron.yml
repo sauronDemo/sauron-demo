@@ -44,7 +44,6 @@ state_machine:
 
 hotfix:
   approved_team_names:
-    - Infrastructure
     - Hotfix Approvers
   master-hotfix:
     branch_name: master
