@@ -1,0 +1,66 @@
+# TODO(bbao): Think of better way than to copy paste from yourPeople3.
+initial_state: CodeReviewState
+merged_state: MergedState
+
+state_machine:
+  CodeReviewState:
+    status_checks:
+      - LGTM:
+          sticky: true
+          keywords:
+            - ':+1:'
+            - 'LGTM'
+            - '#!merge'
+      - merge-label:
+          label_name: 'SAURON-BOT: Auto-merge this PR'
+      - !!python/tuple [affected-only-circleci: null,
+                        circleci: null]
+    hotfix: true
+    skip-ci: true
+    on_success:
+      transition_state: BatchingState
+    on_failure:
+      transition_state: initial_state
+
+  BatchingState:
+    status_checks:
+      - batching: null
+    hotfix: true
+    on_success:
+      transition_state: merged_state
+    on_failure:
+      transition_state: initial_state
+
+  QueuedState:
+    status_checks:
+      - merged: null
+    on_success:
+      transition_state: merged_state
+    on_failure:
+      transition_state: initial_state
+
+  MergedState:
+    status_checks: []
+
+hotfix:
+  approved_team_names:
+    - Infrastructure
+    - Hotfix Approvers
+  master-hotfix:
+    branch_name: master
+    label_name: 'HOTFIX: Master Merge'
+    on_success:
+      transition_state: QueuedState
+    on_failure:
+      transition_state: initial_state
+  production-hotfix:
+    branch_name: production
+    label_name: 'HOTFIX: Production Merge'
+    on_success:
+      transition_state: QueuedState
+    on_failure:
+      transition_state: initial_state
+
+skip-ci:
+  min_char_length: 10
+  transition_state: BatchingState
