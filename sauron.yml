@@ -20,30 +20,31 @@ state_machine:
     on_success:
       transition_state: BatchingState
     on_failure:
-      transition_state: initial_state
+      transition_state: CodeReviewState
 
   BatchingState:
     status_checks:
       - batching: null
     hotfix: true
     on_success:
-      transition_state: merged_state
+      transition_state: MergedState
     on_failure:
-      transition_state: initial_state
+      transition_state: CodeReviewState
 
   QueuedState:
     status_checks:
       - merged: null
     on_success:
-      transition_state: merged_state
+      transition_state: MergedState
     on_failure:
-      transition_state: initial_state
+      transition_state: CodeReviewState
 
   MergedState:
     status_checks: []
 
 hotfix:
   approved_team_names:
+    - Infrastructure
     - Hotfix Approvers
   master-hotfix:
     branch_name: master
@@ -51,14 +52,14 @@ hotfix:
     on_success:
       transition_state: QueuedState
     on_failure:
-      transition_state: initial_state
+      transition_state: CodeReviewState
   production-hotfix:
     branch_name: production
     label_name: 'HOTFIX: Production Merge'
     on_success:
       transition_state: QueuedState
     on_failure:
-      transition_state: initial_state
+      transition_state: CodeReviewState
 
 skip-ci:
   min_char_length: 10
