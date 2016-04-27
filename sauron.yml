@@ -41,6 +41,10 @@ state_machine:
 
   MergedState:
     status_checks: []
+    on_success:
+      transition_state: null
+    on_failure:
+      transition_state: null
 
 hotfix:
   approved_team_names:
