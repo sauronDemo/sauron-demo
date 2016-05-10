@@ -12,7 +12,7 @@ state_machine:
             - 'LGTM'
             - '#!merge'
       - merge-label:
-          label_name: 'SAURON-BOT: Auto-merge this PR'
+          label_name: 'SAURON-BOT: Merge It!'
       - !!python/tuple [affected-only-circleci: null,
                         circleci: null]
     hotfix: true
