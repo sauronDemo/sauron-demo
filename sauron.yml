@@ -13,8 +13,7 @@ state_machine:
             - '#!merge'
       - merge-label:
           label_name: 'SAURON-BOT: Merge It!'
-      - !!python/tuple [affected-only-circleci: null,
-                        circleci: null]
+      - [affected-only-circleci: null, circleci: null]
     hotfix: true
     skip-ci: true
     on_success:
