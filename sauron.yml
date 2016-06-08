@@ -5,17 +5,26 @@ merged_state: MergedState
 state_machine:
   CodeReviewState:
     status_checks:
+      - LGTM:
+          sticky: true
+          keywords:
+            - ':+1:'
+            - 'LGTM'
+            - '#!merge'
       - merge-label:
           label_name: 'SAURON-BOT: Merge It!'
+      - [affected-only-circleci: null, circleci: null]
     hotfix: true
     skip-ci: true
     on_success:
-      transition_state: IntegrationTestState
+      transition_state: BatchingState
     on_failure:
       transition_state: CodeReviewState
 
-  IntegrationTestState:
-    status_checks: null
+  BatchingState:
+    status_checks:
+      - batching: null
+    hotfix: true
     on_success:
       transition_state: MergedState
     on_failure:
