@@ -115,7 +115,7 @@ diff_processor:
         label_name: 'TESTING DIFF PROCESSOR'
     strings_to_check:
       check_added:
-        - 'new branch'
+        - 'testing diff processor'
         - '175b49fa5a4e47ce6815aecc898afe4bd57bcaf5'
     excluded_paths:
       - test_exclude
@@ -124,8 +124,8 @@ diff_processor:
       comment:
         comment_body: 'DIFF PROCESSING IS SO COOL'
     strings_to_check:
-      check_added:
-        - 'existing branch'
+      check_deleted:
+        - 'testing diff processor'
   testing_failed_rule:
     actions:
       pr_comment:
