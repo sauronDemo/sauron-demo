@@ -12,8 +12,10 @@ state_machine:
             - 'LGTM'
             - '#!merge'
       - merge-label:
-          label_name: 'SAURON-BOT: Merge It!'
-      - [affected-only-circleci: null, circleci: null]
+          label_name: 'SAURON-BOT: Merge!'
+      -
+        - affected-only-circleci: null
+        - circleci: null
     hotfix: true
     skip-ci: true
     on_success:
@@ -66,4 +68,68 @@ hotfix:
 
 skip-ci:
   min_char_length: 10
-  transition_state: QueuedState
+  transition_state: BatchingState
+
+rule_engine:
+  cpp:
+    actions:
+      label:
+        label_name: 'C++ Change'
+    file_types:
+      - .cpp
+    min_files: 1
+  java:
+    actions:
+      pr_comment:
+        comment_body: 'Sauron sees a Java change. Sauron is watching.'
+    comment_filter:
+      - asdf
+    file_types:
+      - .java
+    min_files: 4
+  directory:
+    actions:
+      pr_comment:
+        comment_body: 'there is a change in directory `foobar`'
+    file_names:
+      - foobar
+    excluded_paths:
+      - test_foobar
+    min_files: 4
+  test_module:
+    actions:
+      pr_comment:
+        comment_body: 'testing module names'
+    module_names:
+      - testing_modules
+    min_files: 2
+
+diff_processor:
+  testing_diff_processor:
+    actions:
+      assign:
+        assignees:
+          - sauron-demo-Calvin
+          - sauron-demo-bbao
+      label:
+        label_name: 'TESTING DIFF PROCESSOR'
+    strings_to_check:
+      check_added:
+        - 'new branch'
+        - '175b49fa5a4e47ce6815aecc898afe4bd57bcaf5'
+    excluded_paths:
+      - test_exclude
+  test_diff_push:
+    actions:
+      comment:
+        comment_body: 'DIFF PROCESSING IS SO COOL'
+    strings_to_check:
+      check_added:
+        - 'existing branch'
+  testing_failed_rule:
+    actions:
+      pr_comment:
+        comment_body: 'DIFF PROCESSING IS SO COOL'
+    strings_to_check:
+      check_deleted:
+        - 'this string does not exist'
