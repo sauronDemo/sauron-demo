@@ -124,8 +124,8 @@ diff_processor:
       comment:
         comment_body: 'DIFF PROCESSING IS SO COOL'
     strings_to_check:
-      check_deleted:
-        - 'testing diff processor'
+      check_added:
+        - 'testing push on diff processor'
   testing_failed_rule:
     actions:
       pr_comment:
