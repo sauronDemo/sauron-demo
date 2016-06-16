@@ -121,7 +121,7 @@ diff_processor:
       - test_exclude
   test_diff_push:
     actions:
-      comment:
+      pr_comment:
         comment_body: 'DIFF PROCESSING IS SO COOL'
     strings_to_check:
       check_added:
