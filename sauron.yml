@@ -24,6 +24,8 @@ state_machine:
       transition_state: CodeReviewState
 
   BatchingState:
+    mordor:
+      parallelism: 40
     status_checks:
       - batching: null
     hotfix: true
