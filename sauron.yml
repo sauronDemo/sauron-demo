@@ -16,7 +16,7 @@ state_machine:
       -
         - affected-only-circleci: null
         - circleci: null
-        - buildkite: null
+        - affected-only-buildkite: null
     hotfix: true
     skip-ci: true
     on_success:
