@@ -15,7 +15,8 @@ state_machine:
           label_name: 'SAURON-BOT: Merge It!'
       -
         - affected-only-circleci: null
-        - circleci: null
+        - circleci:
+            remove_from_master_comment: true
         - affected-only-buildkite: null
     hotfix: true
     skip-ci: true
