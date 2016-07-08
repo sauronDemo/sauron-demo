@@ -16,14 +16,6 @@ state_machine:
             - '#!merge'
       - merge-label:
           label_name: 'SAURON-BOT: Merge It!'
-      - - affected-only-buildkite: null
-        - affected-only-circleci:
-            remove_from_master_comment: true
-        - circleci:
-            remove_from_master_comment: true
-      - - some-status-check: null
-        - test:
-            remove_from_master_comment: true
     hotfix: true
     skip-ci: true
     on_success:
