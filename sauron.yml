@@ -22,18 +22,17 @@ state_machine:
     hotfix: true
     skip-ci: true
     on_success:
-      transition_state: BatchingState
+      transition_state: GondorState
     on_failure:
       transition_state: CodeReviewState
 
-  BatchingState:
-    mordor:
-      parallelism: '40'
+  GondorState:
+    parallelism: '40'
     status_checks:
-      - batching: null
+      - buildkite-fullsuite: null
     hotfix: true
     on_success:
-      transition_state: MergedState
+      transition_state: QueuedState
     on_failure:
       transition_state: CodeReviewState
 
