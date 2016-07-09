@@ -72,7 +72,7 @@ hotfix:
 
 skip-ci:
   min_char_length: 10
-  transition_state: BatchingState
+  transition_state: GondorState
 
 rule_engine:
   cpp:
