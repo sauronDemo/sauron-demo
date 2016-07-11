@@ -9,7 +9,7 @@ test:
 
 notify:
   webhooks:
-    - url: https://sauron.zncloud.net/circleci/webhook/
+    - url: https://sauron-ui-duplo-devservices.zncloud.net/circleci/webhook/
 
 experimental:
   notify:
