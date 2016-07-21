@@ -42,7 +42,15 @@ state_machine:
     on_failure:
       transition_state: CodeReviewState
 
-  MergedState:
+  ManualGateState:
+    status_checks:
+     - manual-gate: null
+    on_success:
+      transition_state: EndState
+    on_failure:
+      transition_state: EndState
+      
+  EndState:
     status_checks: []
     on_success:
       transition_state: null
