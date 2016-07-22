@@ -42,13 +42,21 @@ state_machine:
     on_failure:
       transition_state: CodeReviewState
 
-  ManualGateState:
+  ManualGateState_1:
+    status_checks:
+     - manual-gate: null
+    on_success:
+      transition_state: ManualGateState_2
+    on_failure:
+      transition_state: null
+
+  ManualGateState_2:
     status_checks:
      - manual-gate: null
     on_success:
       transition_state: EndState
     on_failure:
-      transition_state: EndState
+      transition_state: null
       
   EndState:
     status_checks: []
