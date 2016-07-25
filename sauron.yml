@@ -1,6 +1,6 @@
 # TODO(bbao): Think of better way than to copy paste from yourPeople3.
 initial_state: CodeReviewState
-merged_state: ManualGateState_1
+merged_state: MergedState
 
 state_machine:
   CodeReviewState:
@@ -21,6 +21,9 @@ state_machine:
     skip-ci: true
     on_success:
       transition_state: GondorState
+      override_transition_state:
+        QueuedState:
+          - buildkite-fullsuite
     on_failure:
       transition_state: CodeReviewState
 
@@ -38,27 +41,11 @@ state_machine:
     status_checks:
       - merged: null
     on_success:
-      transition_state: ManualGateState_1
+      transition_state: MergedState
     on_failure:
       transition_state: CodeReviewState
 
-  ManualGateState_1:
-    status_checks:
-     - manual-gate: null
-    on_success:
-      transition_state: ManualGateState_2
-    on_failure:
-      transition_state: null
-
-  ManualGateState_2:
-    status_checks:
-     - manual-gate: null
-    on_success:
-      transition_state: EndState
-    on_failure:
-      transition_state: null
-      
-  EndState:
+  MergedState:
     status_checks: []
     on_success:
       transition_state: null
@@ -140,10 +127,12 @@ diff_processor:
   test_diff_push:
     actions:
       pr_comment:
-        comment_body: 'DIFF PROCESSING IS SO COOL'
+        comment_body: 'DIFF PROCESSING IS SO COOL:'
     strings_to_check:
       check_added:
         - 'testing push on diff processor'
+    include_paths:
+      - 'changes/'
   testing_failed_rule:
     actions:
       pr_comment:
