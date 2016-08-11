@@ -3,7 +3,7 @@ initial_state: CodeReviewState
 merged_state: ManualGateState_1
 
 state_machine:
-  CCCCodeReviewState:
+  CodeReviewState:
     status_checks:
       - LGTM:
           sticky: true
