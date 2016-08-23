@@ -17,7 +17,7 @@ state_machine:
     status_checks:
       - merged: null
     on_success:
-      transition_state: MergedState
+      transition_state: FrodoState
     on_failure:
       transition_state: CodeReviewState
 
