@@ -1,5 +1,5 @@
 initial_state: CodeReviewState
-merged_state: MergedState
+merged_state: QueuedState
 
 state_machine:
   CodeReviewState:
