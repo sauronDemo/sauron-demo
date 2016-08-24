@@ -65,10 +65,8 @@ state_machine:
     on_failure:
       transition_state: null
 
+
 hotfix:
-  approved_team_names:
-    - Infrastructure
-    - Hotfix Approvers
   master-hotfix:
     branch_name: master
     label_name: 'HOTFIX: Master Merge'
@@ -83,6 +81,26 @@ hotfix:
       transition_state: QueuedState
     on_failure:
       transition_state: CodeReviewState
+
+label_locks:
+  'Hotfix: Master Merge':
+    team_exemptions:
+      - Infrastructure
+      - Hotfix Approvers
+    actions_blacklist:
+      - labeled
+  'HOTFIX: Production Merge':
+    team_exemptions:
+      - Infrastructure
+      - Hotfix Approvers
+    actions_blacklist:
+      - labeled
+  'Awesome Sauron Label':
+    team_exemptions:
+      - Infrastructure
+      - Hotfix Approvers
+    actions_blacklist:
+      - unlabeled
 
 skip-ci:
   min_char_length: 10
