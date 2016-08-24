@@ -96,9 +96,6 @@ label_locks:
     actions_blacklist:
       - labeled
   'Awesome Sauron Label':
-    team_exemptions:
-      - Infrastructure
-      - Hotfix Approvers
     actions_blacklist:
       - unlabeled
 
