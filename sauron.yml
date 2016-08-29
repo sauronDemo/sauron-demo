@@ -57,9 +57,25 @@ state_machine:
       - sentry-backend-beta: null
       - sumologic-5xx: null
     on_success:
+      transition_state: ManualGateState_2
+    on_failure:
+      transition_state: null
+
+  ManualGateState_2:
+    status_checks:
+     - manual-gate: null
+    on_success:
+      transition_state: EndState
+    on_failure:
+      transition_state: null
+      
+  EndState:
+    status_checks: []
+    on_success:
       transition_state: null
     on_failure:
       transition_state: null
+
 
 hotfix:
   approved_team_names:
