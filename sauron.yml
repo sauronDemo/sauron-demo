@@ -130,11 +130,6 @@ label_locks:
   'Awesome Sauron Label':
     actions_blacklist:
       - unlabeled
-  'SAURON-BOT: abc':
-    team_exemptions:
-      - Infrastructure
-    actions_blacklist:
-      - labeled
 
 skip-ci:
   min_char_length: 10
@@ -206,7 +201,7 @@ diff_processor:
   test_diff_percentage:
     actions:
       label:
-        label_name: 'SAURON-BOT: abc'
+        label_name: 'App Suite: abc'
     included_paths:
       - changes
     min_percentage: 70
