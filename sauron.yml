@@ -198,10 +198,3 @@ diff_processor:
     strings_to_check:
       check_deleted:
         - 'this string does not exist'
-  test_diff_percentage:
-    actions:
-      label:
-        label_name: 'App Suite: abc'
-    included_paths:
-      - changes/test_diff_processor.txt
-    min_percentage: 70
