@@ -18,8 +18,6 @@ state_machine:
         - affected-only-buildkite: null
         - buildkite-fullsuite:
             remove_from_master_comment: true
-        - buildkite-appsuite:
-            remove_from_master_comment: true
     hotfix: true
     skip-ci: true
     on_success:
