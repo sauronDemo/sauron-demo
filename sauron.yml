@@ -201,7 +201,7 @@ diff_processor:
   test_diff_percentage:
     actions:
       label:
-        label_name: 'App Suite: abc'
+        label_name: 'App Suite: Abc'
     included_paths:
       - changes/test_diff_processor.txt
     min_percentage: 70
