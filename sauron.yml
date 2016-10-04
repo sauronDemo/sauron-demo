@@ -205,3 +205,24 @@ diff_processor:
     included_paths:
       - changes/test_diff_processor.txt
     min_percentage: 70
+  resource_ownership:
+    actions:
+      pr_comment:
+        comment_body: '[Ownerships] {} this PR touches: `{}`'
+    resource_to_check:
+      django_test:
+        base_class:
+          - TestCase
+      django_model:
+        base_class:
+          - Model
+          - ExtendedModel
+      eta_task:
+        base_class:
+          - Task
+        func_decorator:
+          - task
+          - periodic_task
+
+    comment_filter:
+      - '[Ownerships]'
