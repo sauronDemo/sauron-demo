@@ -206,9 +206,6 @@ diff_processor:
       - changes/test_diff_processor.txt
     min_percentage: 70
   resource_ownership:
-    actions:
-      pr_comment:
-        comment_body: '{}: `{}`'
     resource_to_check:
       django_test:
         base_class:
@@ -224,5 +221,3 @@ diff_processor:
           - task
           - periodic_task
 
-    comment_filter:
-      - '[Ownerships]'
