@@ -208,7 +208,7 @@ diff_processor:
   resource_ownership:
     actions:
       pr_comment:
-        comment_body: '[Ownerships] {} this PR touches: `{}`'
+        comment_body: '{}: `{}`'
     resource_to_check:
       django_test:
         base_class:
