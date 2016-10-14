@@ -42,40 +42,14 @@ state_machine:
     status_checks:
       - merged: null
     on_success:
-      transition_state: EndState
-      override_transition_state:
-        FrodoState:
-          - do-post-merge
+      transition_state: ManualGateState_1
     on_failure:
       transition_state: CodeReviewState
-
-  FrodoState:
+      
+  # looks stupid but this is actually used for tests.
+  ManualGateState_1:
     status_checks:
-      - frodo: null
-    on_success:
-      transition_state: IntegrationTestState
-    on_failure:
-      transition_state: null
-
-  IntegrationTestState:
-    status_checks:
-      - mordor-glue: null
-      - mordor-canary: null
-    on_success:
-      transition_state: ValidationState
-    on_failure:
-      transition_state: null
-    mordor:
-      mordor-glue:
-        parallelism: 5
-      mordor-canary:
-        parallelism: 10
-        
-  ValidationState:
-    status_checks:
-      - sentry-frontend-beta: null
-      - sentry-backend-beta: null
-      - sumologic-5xx: null
+     - manual-gate: null
     on_success:
       transition_state: ManualGateState_2
     on_failure:
