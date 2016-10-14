@@ -42,7 +42,10 @@ state_machine:
     status_checks:
       - merged: null
     on_success:
-      transition_state: FrodoState
+      transition_state: EndState
+      override_transition_state:
+        FrodoState:
+          - do-post-merge
     on_failure:
       transition_state: CodeReviewState
 
