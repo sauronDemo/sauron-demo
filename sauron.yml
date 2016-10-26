@@ -203,3 +203,13 @@ diff_processor:
           - task
           - periodic_task
 
+
+lint:
+  py: 
+    command: flake8
+    config:
+      ignore:
+        - E303
+        - E128
+      max_line_length: 140
+      max_complexity: 10
