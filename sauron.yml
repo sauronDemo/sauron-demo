@@ -211,5 +211,6 @@ lint:
       ignore:
         - E303
         - E128
+        - W191
       max_line_length: 140
       max_complexity: 10
