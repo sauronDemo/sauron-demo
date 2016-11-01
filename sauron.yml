@@ -17,14 +17,10 @@ state_machine:
       - merge-label:
           label_name: 'SAURON-BOT: Merge It!'
       - - affected-only-buildkite:
+            remove_from_master_comment: false
+        - buildkite-appsuite:
             remove_from_master_comment: true
         - buildkite-fullsuite:
-            remove_from_master_comment: true
-        - buildkite-appsuite:
-            remove_from_master_comment: false
-        - gh/ci/circleci:
-            remove_from_master_comment: true
-        - gh/arbitrary:
             remove_from_master_comment: true
     hotfix: true
     skip-ci: true
