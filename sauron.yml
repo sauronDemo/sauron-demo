@@ -20,6 +20,8 @@ state_machine:
             remove_from_master_comment: true
         - buildkite-appsuite:
             remove_from_master_comment: true
+        - gh/ci/circleci:
+            remove_from_master_comment: true
     hotfix: true
     skip-ci: true
     on_success:
