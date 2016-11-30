@@ -7,19 +7,19 @@ state_machine:
   CodeReviewState:
     status_checks:
       - LGTM:
-        default:
-          sticky: true
-          keywords:
-            - ':+1:'
-            - 'LGTM'
-            - '#!merge'
-        ui_qa:
-          sticky: false
-          keywords:
-            - 'QA-LGTM'
-          conditions:
-            label:
-              label_name: 'UI QA Required'
+          default:
+            sticky: true
+            keywords:
+              - ':+1:'
+              - 'LGTM'
+              - '#!merge'
+          ui_qa:
+            sticky: false
+            keywords:
+              - 'QA-LGTM'
+            conditions:
+              label:
+                label_name: 'UI QA Required'
       - merge-label:
           label_name: 'SAURON-BOT: Merge It!'
       -
