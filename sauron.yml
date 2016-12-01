@@ -13,13 +13,17 @@ state_machine:
               - ':+1:'
               - 'LGTM'
               - '#!merge'
-          ui_qa:
+          QA:
             sticky: false
             keywords:
               - 'QA-LGTM'
             conditions:
               label:
-                label_name: 'UI QA Required'
+                label_names:
+                  - 'UI QA Required'
+                  - 'QA Required'
+            approved_team_names:
+              - QA
       - merge-label:
           label_name: 'SAURON-BOT: Merge It!'
       -
