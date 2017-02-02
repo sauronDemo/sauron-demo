@@ -162,7 +162,27 @@ rule_engine:
     module_names:
       - testing_modules
     min_files: 2
-
+  test_lgtm:
+    actions:
+      pr_comment:
+        comment_body: '@sauron-demo-Josephine, this pr touches:'
+      require_lgtm:
+        sticky: false
+        approvers:
+          - sauron-demo-Josephine
+        approved_team_names:
+          - QA
+    comment_filter:
+      - '@sauron-demo/qa'
+    included_paths:
+      - sauron.yml
+  test_lgtm_2:
+    actions:
+      require_lgtm:
+        approvers:
+          - sauron-demo-bbao
+    included_paths:
+      - sauron.yml
 diff_processor:
   testing_diff_processor:
     actions:
