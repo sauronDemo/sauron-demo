@@ -128,6 +128,12 @@ label_locks:
 skip-ci:
   min_char_length: 10
   transition_state: GondorState
+  prevented_team_names:
+    - Time and Pay Contractors
+
+lgtm:
+  prevented_team_names:
+    - Time and Pay Contractors
 
 rule_engine:
   cpp:
