@@ -109,7 +109,7 @@ hotfix:
 
 
 label_locks:
-  'Hotfix: Master Merge':
+  'HOTFIX: Master Merge':
     team_exemptions:
       - Infrastructure
       - Hotfix Approvers
