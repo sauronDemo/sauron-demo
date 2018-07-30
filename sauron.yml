@@ -48,7 +48,8 @@ state_machine:
   GondorState:
     parallelism: '40'
     status_checks:
-      - buildkite-fullsuite: null
+      - buildkite-fullsuite:
+          get_latest_result: true
     hotfix: true
     on_success:
       transition_state: QueuedState
