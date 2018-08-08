@@ -39,7 +39,8 @@ state_machine:
       override_transition_state:
         QueuedState:
           -
-            - buildkite-fullsuite
+            - buildkite-fullsuite:
+              get_latest_result: true
             - buildkite-appsuite      
     on_failure:
       transition_state: CodeReviewState
@@ -48,8 +49,7 @@ state_machine:
   GondorState:
     parallelism: '40'
     status_checks:
-      - buildkite-fullsuite:
-          get_latest_result: true
+      - buildkite-fullsuite
     hotfix: true
     on_success:
       transition_state: QueuedState
