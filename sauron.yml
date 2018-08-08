@@ -30,6 +30,7 @@ state_machine:
         - affected-only-buildkite: null
         - buildkite-fullsuite:
             remove_from_master_comment: true
+            get_latest_result: true
         - buildkite-appsuite:
             remove_from_master_comment: true
     hotfix: true
@@ -39,8 +40,7 @@ state_machine:
       override_transition_state:
         QueuedState:
           -
-            - buildkite-fullsuite:
-              get_latest_result: true
+            - buildkite-fullsuite
             - buildkite-appsuite      
     on_failure:
       transition_state: CodeReviewState
