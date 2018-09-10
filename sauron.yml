@@ -3,6 +3,8 @@
 initial_state: CodeReviewState
 merged_state: ManualGateState_1
 
+branch_regex: 'master|production-?.*'
+
 state_machine:
   CodeReviewState:
     status_checks:
