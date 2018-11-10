@@ -195,7 +195,6 @@ rule_engine:
           - sauron-demo-bbao
     included_paths:
       - sauron.yml
-diff_processor:
   testing_diff_processor:
     actions:
       assign:
